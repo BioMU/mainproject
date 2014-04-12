@@ -1,0 +1,70 @@
+
+int pulsePin = 2;
+int thermoPin = A0;
+int gsrPin = A15;
+
+
+
+char buffer[5];
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pulsePin,INPUT);
+  pinMode(gsrPin, INPUT);
+  pinMode(thermoPin, INPUT);
+}
+
+void loop() {
+  
+  
+     float GSR = Get_gsr();
+     float THERMO = Get_thermo();
+     float PULSE = Get_pulse();
+     Serial.print("                                        GSR =    ");
+     Serial.println(GSR);
+     Serial.print("                                        THERMO =    ");
+     Serial.println(THERMO);
+     Serial.print("                                        PULSE =    ");
+     Serial.println(PULSE);
+
+     Serial.print("#S|GETDATA|[");
+     Serial.print(itoa((GSR), buffer, 10));
+     Serial.println("]#");
+     Serial.print("#S|GETDATA|[");
+     Serial.print(itoa((THERMO), buffer, 10));
+     Serial.println("]#");
+     Serial.print("#S|GETDATA|[");
+     Serial.print(itoa((PULSE), buffer, 10));
+     Serial.println("]#");
+
+
+}
+
+float Get_pulse()
+{
+    unsigned long durationOFF;
+    float pouls;
+    float cycle;
+    durationOFF = pulseIn(pulsePin, LOW, 3000000);
+    cycle = (durationOFF/1000 + 100);
+    pouls = 60/(cycle/1000);
+    return pouls;
+}
+
+
+
+float Get_thermo()
+{
+  int value = analogRead(A0);
+  value = ((value-435)/16)+25;
+  delay(1000);
+  return value;
+}
+
+float Get_gsr()
+{
+  int value = analogRead(A15);
+  value = map(value, 0, 1023, 0 ,255);
+  delay(1000);
+  return value;
+}
