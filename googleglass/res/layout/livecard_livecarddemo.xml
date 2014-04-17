@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="#001133">
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <ImageView
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      android:id="@+id/atmoOpacity"
+      android:src="@drawable/cloud"
+      android:scaleType="fitXY"
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="70dp"/>
+
+    <ImageView android:id="@+id/tv1"
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:keepScreenOn="true"
+              android:layout_marginTop="56dp"
+              android:layout_alignParentTop="true"
+              android:layout_toRightOf="@+id/atmoOpacity"
+              android:layout_marginLeft="16dp"
+              android:src="@drawable/up"
+              android:text="gfdfg"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:id="@+id/tvTempMax"
+      android:textSize="55sp"
+      android:layout_toRightOf="@+id/tv1"
+      android:text="gfdgdf"
+      android:layout_marginTop="-30dp"
+      android:layout_marginLeft="20dp"
+      android:layout_alignTop="@+id/tv1"/>
+
+    <ImageView
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:id="@+id/tvTemp"
+      android:layout_below="@+id/tv1"
+      android:layout_alignLeft="@+id/tv1"
+      android:layout_marginTop="70dp"
+      android:src="@drawable/down"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:id="@+id/tvTempMin"
+      android:layout_alignTop="@+id/tvTemp"
+      android:layout_toRightOf="@+id/tvTemp"
+      android:textSize="55dp"
+      android:layout_marginTop="-30dp"
+      android:layout_marginLeft="20dp"
+      android:text="gfdfg"/>
+
+
+  </RelativeLayout>
+
+</FrameLayout>
+
